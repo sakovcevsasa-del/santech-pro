@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Иконки Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .register-card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+        .btn-register {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+        }
+        .btn-register:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body class="gradient-bg">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="card register-card">
+                    <div class="card-body p-5">
+                        <!-- Логотип и заголовок -->
+                        <div class="text-center mb-4">
+                            <i class="bi bi-person-plus-fill display-4 text-primary mb-3"></i>
+                            <h2 class="card-title fw-bold">вход</h2>
+                            <p class="text-muted">войдите в свой аккаунт</p>
+                        </div>
+
+                        <!-- Форма регистрации -->
+                        <form id="registerForm" novalidate>
+                            <!-- Имя и Фамилия в одной строке -->
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="firstName" class="form-label">Login</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="bi bi-person"></i>
+                                        </span>
+                                        <input type="text" class="form-control" id="firstName" required>
+                                        <div class="invalid-feedback">
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                                </div>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email адрес</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="bi bi-envelope"></i>
+                                    </span>
+                                    <input type="email" class="form-control" id="email" required>
+                                    <div class="invalid-feedback">
+                                        Пожалуйста, введите корректный email.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Пароль -->
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Пароль</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="bi bi-lock"></i>
+                                    </span>
+                                    <input type="password" class="form-control" id="password" required minlength="6">
+                                    <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <div class="invalid-feedback">
+                                        Пароль должен содержать минимум 6 символов.
+                                    </div>
+                                </div>
+                                <div class="form-text">
+                                    Пароль должен содержать минимум 6 символов.
+                                </div>
+                            </div>
+
+                            <!-- Подтверждение пароля -->
+                            <div class="mb-3">
+                                <label for="confirmPassword" class="form-label">Подтвердите пароль</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="bi bi-lock-fill"></i>
+                                    </span>
+                                    <input type="password" class="form-control" id="confirmPassword" required>
+                                    <div class="invalid-feedback">
+                                        Пароли не совпадают.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Соглашение -->
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="agreeTerms" required>
+                                <label class="form-check-label" for="agreeTerms">
+                                    Я согласен с <a href="#" class="text-decoration-none">условиями использования</a> 
+                                    и <a href="#" class="text-decoration-none">политикой конфиденциальности</a>
+                                </label>
+                                <div class="invalid-feedback">
+                                    Вы должны согласиться с условиями.
+                                </div>
+                            </div>
+
+                            <!-- Кнопка регистрации -->
+                            <div class="d-grid gap-2 mb-3">
+                                <button type="submit" class="btn btn-register btn-lg">
+                                    <i class="bi bi-person-plus me-2"></i>
+                                    вход
+                                </button>
+                            </div>
+
+                            <!-- Ссылка на вход -->
+                            <div class="text-center">
+                                <p class="mb-0">нет аккаунта? 
+                                    <a href="#" class="text-decoration-none fw-bold">зарегатся</a>
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Сообщение об успешной регистрации -->
+                <div id="successMessage" class="alert alert-success mt-3 text-center d-none">
+                    <i class="bi bi-check-circle-fill me-2"></i>
+                  прошла успешно!ием.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS с Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Валидация формы
+        (function() {
+            'use strict';
+            
+            const form = document.getElementById('registerForm');
+            const password = document.getElementById('password');
+            const confirmPassword = document.getElementById('confirmPassword');
+            const togglePassword = document.getElementById('togglePassword');
+            const successMessage = document.getElementById('successMessage');
+
+            // Переключение видимости пароля
+            togglePassword.addEventListener('click', function() {
+                const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                password.setAttribute('type', type);
+                confirmPassword.setAttribute('type', type);
+                this.querySelector('i').classList.toggle('bi-eye');
+                this.querySelector('i').classList.toggle('bi-eye-slash');
+            });
+
+            // Валидация подтверждения пароля
+            confirmPassword.addEventListener('input', function() {
+                if (password.value !== confirmPassword.value) {
+                    confirmPassword.setCustomValidity('Пароли не совпадают');
+                } else {
+                    confirmPassword.setCustomValidity('');
+                }
+            });
+
+            // Обработка отправки формы
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                event.stopPropagation();
+
+                // Проверка паролей перед отправкой
+                if (password.value !== confirmPassword.value) {
+                    confirmPassword.setCustomValidity('Пароли не совпадают');
+                }
+
+                if (form.checkValidity()) {
+                    // Здесь обычно отправка данных на сервер
+                    console.log('Данные для регистрации:', {
+                        firstName: document.getElementById('firstName').value,
+                        lastName: document.getElementById('lastName').value,
+                        email: document.getElementById('email').value,
+                        password: password.value
+                    });
+
+                    // Показываем сообщение об успехе
+                    form.classList.add('d-none');
+                    successMessage.classList.remove('d-none');
+                    
+                    // В реальном приложении здесь был бы redirect или обработка ответа сервера
+                }
+
+                form.classList.add('was-validated');
+            }, false);
+
+            // Сброс валидации при изменении полей
+            const inputs = form.querySelectorAll('input');
+            inputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    if (this.checkValidity()) {
+                        this.classList.remove('is-invalid');
+                        this.classList.add('is-valid');
+                    } else {
+                        this.classList.remove('is-valid');
+                        this.classList.add('is-invalid');
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
