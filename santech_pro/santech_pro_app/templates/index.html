@@ -23,34 +23,30 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarWithDropdown">
         <ul class="navbar-nav">
-           <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">наши предложения</a>
-           </li>
-           <li class="nav-item">
-              <a class="nav-link" href="#">наша продукция</a>
-           </li>
-           <li class="nav-item">
-              <a class="nav-link" href="#">товары</a>
-           </li>
+            <li class="nav-item">
+               <a class="nav-link active" aria-current="page" href="#">наши предложения</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="#">наша продукция</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="#">товары</a>
+            </li>
 
-           <li class="nav-item">
-          <a class="nav-link" href="{% url 'auf' %}"> Вход / Регистрация</a>
-        </li>
-           
-           <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-
-
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-               <li><a class="dropdown-item" href="#">регистрация</a></li>
-               <li><a class="dropdown-item" href="#">вход</a></li>
-               <li><a class="dropdown-item" href="#">поддержка</a></li>
-              </ul>
-           </li>
-           <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">настройки</a>
-           </li>
+         {% if first_name %}
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+							{{ first_name }}
+						</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href={% url 'logout' %}>Выйти</a></li>
+						</ul>
+					</li>
+					{% else %}
+					<li class="nav-item">
+						<a class="nav-link" href={% url 'auf' %}>Вход / Регистрация</a>
+					</li>
+					{% endif %}
         </ul>
       </div>
    </div>
@@ -65,7 +61,7 @@
             <div class="card">
                 <img src="" alt="" class="card-image">
                 <div class="card-content">
-                    <span class="card-tag"></span>
+                    <span class="card-tag">унитаз</span>
                     <h2 class="card-title"></h2>
                     <p class="card-text"></p>
                     <a href="#" class="card-button">Подробнее</a>

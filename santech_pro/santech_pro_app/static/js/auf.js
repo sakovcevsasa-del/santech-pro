@@ -1,8 +1,9 @@
-$('#auf-button').click(
+$('#auth-button').click(
     function() {
-        let email = $('#exampleInputEmail1').val();
-        let password = $('#exampleInputPassword1').val();
+        let email = $('#email').val();
+        let password = $('#password').val();
         let csrf = $('[name=csrfmiddlewaretoken]').val();
+
         if(!email) {
             alert('Введите адрес почты');
         }
@@ -12,13 +13,19 @@ $('#auf-button').click(
         }
 
         $.ajax({
-            url: '/auf/',
-            type: 'POST', // отправляет POST-запрос на сервер
+            url: '/auth/',
+            type: 'POST', // отправляем POST-запрос на сервер
             dataType: 'json',
             data: {
                 'email' : email,
                 'password' : password,
-                'csrfmiddlewaretoken' : csrf
+                'csrfmiddlewaretoken': csrf
+            },
+            success: function(data) {
+                window.location.href = '/';
+            },
+            error: function(data) {
+                console.log('error auth');
             }
         });
     }

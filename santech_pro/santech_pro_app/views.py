@@ -1,19 +1,32 @@
-from django.shortcuts import render
-from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
+from django.contrib.auth import login, logout, authenticate
 from django.http import JsonResponse
 from django.contrib.auth.models import User
 
 def index(request):
-    return render(request, 'index.html')
+    try:
+        context = { 'first_name' : request.user.first_name }
+        return render(request, 'index.html', context)         
+    except AttributeError as e:
+        return render(request, 'index.html')
 
-def auth(request):
+
+def auf(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
 
-        print(email, password)    
+        user = authenticate(request, username=email, password=password)
+        print(user)
+ 
+        if user is not None:
+            print('auth success')
+            login(request, user)
+            return redirect('index')
+        else:
+            return JsonResponse({'status' : 'error'})
     else:
-        return render(request, 'auth.html')
+        return render(request, 'auf.html')
 
 def reg(request):
 
@@ -21,9 +34,9 @@ def reg(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
-        username = request.POST.get('username')
         first_name = request.POST.get('first_name')
-        last_name = request.POST.get('last-name')
+        last_name = request.POST.get('last_name')
+        username = email
 
         # Создаем пользователя
         user = User.objects.create_user(username, email, password)
@@ -31,20 +44,10 @@ def reg(request):
         user.last_name = last_name
         user.save()
         login(request, user)
-
+        return JsonResponse({'status' : 'success'})
     return render(request, 'reg.html')
     
 
-
-
-    
-
-
-
-        # user = authenticate(request, email=email, password=password)
-        # if user is not None:
-        #     login(request, user)
-        #     print(f'login: {username}, password: {password}')
-        #     return JsonResponse({'status': 'success', 'message': 'OK'})
-        # else:
-        #     return JsonResponse({'status': 'error', 'message': 'Неверный логин и пароль'})
+def logout_view(request):
+    logout(request)
+    return redirect('index') #перенаправление

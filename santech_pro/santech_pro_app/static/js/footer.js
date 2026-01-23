@@ -5,7 +5,7 @@ $('body').append(
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="footer-info">
-						Eduard Suyargulov
+						амир не когда не станет натуралом
 						<br>
 						2025
 						<br>

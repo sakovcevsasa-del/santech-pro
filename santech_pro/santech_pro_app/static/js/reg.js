@@ -2,7 +2,6 @@ $('#reg-button').click(
     function() {
         let email = $('#email').val();
         let password = $('#password').val();
-        let username = $('#username').val();
         let firstName = $('#first-name').val();
         let lastName = $('#last-name').val();
         let csrf = $('[name=csrfmiddlewaretoken]').val();
@@ -16,17 +15,20 @@ $('#reg-button').click(
         }
 
         $.ajax({
-            url: '/auth/',
+            url: '/reg/',
             type: 'POST', // отправляем POST-запрос на сервер
             dataType: 'json',
             data: {
                 'email' : email,
                 'password' : password,
-                'username' : username,
                 'first_name' : firstName,
                 'last_name' : lastName,
                 'csrfmiddlewaretoken': csrf
-            }
+            },
+            
+            success: function(data) {
+                window.location.href = '/'; //Переход на главную сайта
+            },
         });
     }
 );
