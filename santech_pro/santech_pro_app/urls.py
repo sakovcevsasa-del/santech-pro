@@ -1,18 +1,14 @@
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-    # Главная страница
-    path('', views.index, name='index'),
-    
-    #Страница авторизации
-    path('auf/', views.auf, name='auf'), # name - это имя маршрута
-
-    #Страница регистрации
+    path('', views.index, name='index'), # name - это имя маршрута
+    path('auf/', views.auf, name='auf'),
     path('reg/', views.reg, name='reg'),
     path('logout/', views.logout_view, name='logout'),
-    
+    # path('item/<int:id>', views.item_template, name='item'),
     path('items/', views.items_list, name='items_list')
-
 ]
-
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
