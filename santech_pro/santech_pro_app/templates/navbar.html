@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+   <div class="container-fluid">
+
+      <a class="navbar-brand" href="#"><i class="fa-solid fa-toilet"></i>СантехникPRO</a>
+    
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarWithDropdown">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarWithDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+               <a class="nav-link active" aria-current="page" href="#">наши предложения</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="#">наша продукция</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="#">товары</a>
+            </li>
+
+            {% if first_name %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        {{ first_name }}
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href={% url 'logout' %}>Выйти</a></li>
+                    </ul>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href={% url 'auf' %}>Вход / Регистрация</a>
+                </li>
+            {% endif %}
+        </ul>
+      </div>
+   </div>
+</nav>
