@@ -1,0 +1,83 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Font Awesome подключение -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+    <div class="container-fluid"> 
+        <a class="navbar-brand" href="#"><i class="fa-solid fa-toilet"></i>СантехникPRO</a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarWithDropdown" aria-controls="navbarWithDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarWithDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">наши предложения</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">наша продукция</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">товары</a>
+                </li>
+
+            {% if first_name %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                {{ first_name }}
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href={% url 'logout' %}>Выйти</a></li>
+                            </ul>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href={% url 'auf' %}>Вход / Регистрация</a>
+                        </li>
+                        {% endif %}
+            </ul>
+        </div>
+    </div>
+    </nav>
+      
+        <main class="container" id="item">
+              {% for item in items_list %}
+              <div class="row item-container">
+                <div class="col-12">
+                  <a href="{{ item.id }}">{{ item.item_title }}</a>
+                  <p>{{ item.item_subtitle }}</p>
+                </div>
+              </div>
+              {% endfor %}
+            </main>        
+
+    <div class="container">
+            <h1>Наши услуги</h1>            
+            <div class="container">
+                <div class="row justify-content-center">
+                {% for item in items_list %}
+                    <div class="col-3">
+                        <div class="card" style="width: 18rem;">
+                            <img src={{ item.photo.url }} class="card-img-top" alt={{ item.item_title }}>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ item.item_title }}</h5>
+                                <!--<p class="card-text">S{{ item.description }}</p>-->
+                                <a href="/item/{{ item.id }}" class="card-button">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

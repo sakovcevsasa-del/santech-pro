@@ -6,12 +6,11 @@
 {% block css %}
     <link rel="stylesheet" href="{% static 'css/header.css' %}">
     <link rel="stylesheet" href={% static 'css/reg.css' %}>
+    <link rel="stylesheet" href={% static 'css/footer.css' %}>
 {% endblock %}
 
 {% block content %}
-    <div class="reg">
-
-<main class="container">
+    <main class="container">
         <div class="reg">
             {% csrf_token %}
 
@@ -23,8 +22,6 @@
             <label for="login" class="form-label">Пароль</label>
             <input type="password" id="password" class="form-control" placeholder="Введите пароль">
 
-            
-           
             <!-- Имя -->
             <label for="login" class="form-label">Имя</label>
             <input type="text" id="first-name" class="form-control" placeholder="Введите имя">
@@ -36,3 +33,6 @@
             <input type="button" id="reg-button" class="btn btn-dark" value="Зарегистрироваться">
         </div>
     </main>
+
+    <script src={% static 'js/reg.js '%}></script>
+{% endblock %}

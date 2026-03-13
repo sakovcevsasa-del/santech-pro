@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="{% static 'css/header.css' %}">
     <link rel="stylesheet" href="{% static 'css/interesting.css' %}">
     <link rel="stylesheet" href="{% static 'css/feedback.css' %}">
+    <link rel="stylesheet" href="{% static 'css/auf.css' %}">
 {% endblock %}
 
 {% block content %}
-    <div class="auf">
+    <div class="container auf">
 
         {% csrf_token %}
         <form>
@@ -28,9 +29,9 @@
                 <label class="form-check-label" for="exampleCheck1">запомни меня</label>
             </div>
             <button type="submit" id="auf-button" class="btn btn-primary">войти</button>
-                                <li class="nav-item">
-            <a class="nav-link" href="{% url 'reg' %}">Зарегистрироваться</a>
-            </li>
+            <a class="nav-link" href="{% url 'reg' %}" id="reg-button">Зарегистрироваться</a>
         </form>
     </div>
+
+    <script src={% static 'js/auf.js' %}></script>
 {% endblock %}

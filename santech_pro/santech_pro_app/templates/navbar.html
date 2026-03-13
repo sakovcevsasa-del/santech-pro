@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
    <div class="container-fluid">
 
-      <a class="navbar-brand" href="#"><i class="fa-solid fa-toilet"></i>СантехникPRO</a>
+      <a class="navbar-brand" href={% url 'index' %}><i class="fa-solid fa-toilet"></i>СантехникPRO</a>
     
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarWithDropdown">
         <span class="navbar-toggler-icon"></span>
@@ -15,7 +15,7 @@
                <a class="nav-link" href="#">наша продукция</a>
             </li>
             <li class="nav-item">
-               <a class="nav-link" href="#">товары</a>
+               <a class="nav-link" href={% url 'items_list' %}>товары</a>
             </li>
 
             {% if first_name %}
