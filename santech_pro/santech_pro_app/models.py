@@ -16,8 +16,8 @@ def item_description_path():
 class Item(models.Model):
 
     santehnick_tupe = (
-        ('туалет', 'туалет'),
-        ('сантехника', 'сантехника') 
+        ('toilet', 'туалет'),
+        ('plumbing', 'сантехника') 
     ) 
 
     item_title = models.CharField(max_length=100) # название товара

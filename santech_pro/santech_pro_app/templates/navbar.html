@@ -16,6 +16,13 @@
             </li>
             <li class="nav-item">
                <a class="nav-link" href={% url 'items_list' %}>товары</a>
+               <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Унитазы</a></li>
+                    <li><a class="dropdown-item" href="#">раковины</a></li>
+                    <li><a class="dropdown-item" href="#">краны</a></li>
+                    <li><a class="dropdown-item" href="#">канализационные трубы</a></li>
+                    <li><a class="dropdown-item" href="#">просто трубы</a></li>
+               </ul>
             </li>
 
             {% if first_name %}
@@ -27,6 +34,9 @@
                         <li><a class="dropdown-item" href={% url 'logout' %}>Выйти</a></li>
                     </ul>
                 </li>
+
+
+
                 {% else %}
                 <li class="nav-item">
                     <a class="nav-link" href={% url 'auf' %}>Вход / Регистрация</a>

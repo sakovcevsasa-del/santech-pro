@@ -54,7 +54,9 @@ def logout_view(request):
     return redirect('index') #перенаправление
 
 def items_list (request):
-    items = Item.objects.all()
+    items = Item.objects.all(if santehnick_tupe == 'all':
+                             good = Good.object.filter(santehnick_tupe = santehnick_tupe)
+                             context = {})
     context = {
         'items_list' : items
     }
